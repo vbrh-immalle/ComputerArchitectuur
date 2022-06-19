@@ -80,8 +80,12 @@ Wanneer we spreken over een 8-, 16-, 32- of 64-bit-computer, duiden we daar (mee
 > *We drukken de grootte van RAM-geheugens altijd uit in bytes of dus 8-bits (dus elk schuifje bevat 1 byte). Wil dit dan zeggen dat de databus van moderne CPU's altijd 8-bits is?*
 > Neen! De breedte v.d. databus is meestal hetzelfde als die van de adresbus. Een 64-bit CPU zal dus vaak naast 64 adreslijnen ook 64 datalijnen hebben. Het voordeel hiervan is dat er in één keer 64/8=8 bytes kunnen worden doorgestuurd of dus 8 schuifjes in één keer (1 klokcyclus) kunnen worden gevuld. Moderne CPU's en modern RAM-geheugen werken sneller dan oudere hardware en dat komt dus niet alleen omdat ze meer *transfers* doen per seconde (aan een hogere klokfrequentie werken) maar ook omdat ze elke klokcyclus een groter getal verplaatsen (en dus eigenlijk meerdere schuifjes in één keer kunnen vullen of uitlezen).
 
-## CPU-componenten
+## CPU: instructie-set en assembler-code
+Een CPU voert **instructies** uit. Er kunnen uiteraard enkel instructies uitgevoerd worden die de CPU kent, of die dus tot de **instructie-set** behoren. 
 
+> Elke CPU-architectuur (x86, ARM, RISC-V, ...) heeft een andere instructieset. Op https://godbolt.org/ kan je zelf experimenteren met compilers voor verschillende programmeertalen en CPU-architecturen. Je kan er een stukje code schrijven in een *hogere* programmeertaal en vaststellen hoe de **assembler**-code er uit ziet die de compiler genereert, voor verschillen architecturen.
+
+## CPU: componenten
 - **Data(Buffer)-register**: bevat de inhoud v.d. databus
 - **Adres(Buffer)-register**: bevat de inhoud v.d. adresbus
 - **Program-Counter-register**: bevat het adres van het RAM-geheugen waar de volgende uit te voeren instructie staat
@@ -91,4 +95,14 @@ Wanneer we spreken over een 8-, 16-, 32- of 64-bit-computer, duiden we daar (mee
 - **ALU**: Arithmetic and Logic Unit, voert berekeningen uit wanneer de Control Logic hierom vraagt, werkt meestal met 1 of meerdere werkregisters
 - **Werkregister**(s) (het eerste werkregister heet vaak A of ACCumulator): wordt gebruikt voor allerlei berekeningen
 
+> Een 64-bit-processor heeft meestal werk-, databuffer- en adresbuffer-registers die 64 bit zijn.
 
+## CPU: fetch/decode/execute
+Een CPU herhaalt eigenlijk eindeloos deze 3 stappen:
+
+-   **fetch**: de instructie wordt uit het RAM in het instructie-register v.d. CPU geladen
+-   **decode**: de instructie uit het **instructie-register** wordt door de **instructie-decoder** geanalyseerd
+-   **execute**: de **Control Logic** v.d. CPU stuurt alle CPU-organen op de juiste manier aan om de instructie uit te voeren (b.v. voor een wiskundige operatie wordt de **ALU** op de juiste manier geactiveerd)
+
+## Probeer zelf!
+https://tools.withcode.uk/cpu/?ram=913f911f920000000000000000000000
