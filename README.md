@@ -78,7 +78,7 @@ Wanneer we spreken over een 8-, 16-, 32- of 64-bit-computer, duiden we daar (mee
 > Een **32-bit CPU** die 32 adreslijnen kan aansturen, kan dus in principe maar 2^32 = **4 GiB RAM**-geheugen adresseren.
 
 > *We drukken de grootte van RAM-geheugens altijd uit in bytes of dus 8-bits (dus elk schuifje bevat 1 byte). Wil dit dan zeggen dat de databus van moderne CPU's altijd 8-bits is?*
-> Neen! De breedte v.d. databus is meestal hetzelfde als die van de adresbus. Een 64-bit CPU zal dus vaak naast 64 adreslijnen ook 64 datalijnen hebben. Het voordeel hiervan is dat er in één keer 64/8=8 bytes kunnen worden doorgestuurd of dus 8 schuifjes in één keer (1 klokcyclus) kunnen worden gevuld. Moderne CPU's en modern RAM-geheugen werken sneller dan oudere hardware en dat komt dus niet alleen omdat ze meer *transfers* doen per seconde (aan een hogere klokfrequentie werken) maar ook omdat ze elke klokcyclus een groter getal verplaatsen (en dus eigenlijk meerdere schuifjes in één keer kunnen vullen of uitlezen).
+> Neen! De breedte v.d. databus is meestal hetzelfde als die van de adresbus. Een 64-bit CPU zal dus vaak naast 64 adreslijnen ook 64 datalijnen hebben. Het voordeel hiervan is dat er in één keer 64/8=8 bytes kunnen worden doorgestuurd of dus 8 schuifjes in één keer (1 klokcyclus) kunnen worden gevuld. Moderne CPU's en modern RAM-geheugen werken sneller dan oudere hardware en dat komt dus niet alleen omdat ze meer *transfers* doen per seconde (aan een hogere klokfrequentie werken) maar ook omdat ze elke klokcyclus een groter getal verplaatsen (en dus eigenlijk meerdere schuifjes in één keer kunnen vullen of uitlezen). Zie https://www.youtube.com/watch?v=Wu2A4fpFzgs voor een animatie met uitleg.
 
 ## CPU: instructie-set en assembler-code
 Een CPU voert **instructies** uit. Er kunnen uiteraard enkel instructies uitgevoerd worden die de CPU kent, of die dus tot de **instructie-set** behoren. 
@@ -112,7 +112,7 @@ Een CPU herhaalt eigenlijk eindeloos deze 3 stappen:
 https://tools.withcode.uk/cpu/?ram=913f911f920000000000000000000000
 
 ## Geheugenpiramide
-De architectuur van computersystemen zijn door de jaren heen geëvolueerd om met de laatste geheugentechnologiëen een zo snel mogelijk systeem te bouwen. Het principe van de *geheugenpiramide* blijft echter altijd overeind: onderaan (aan de basis v.d. piramide) vinden we de **grote** en **trage** geheugens. Bovenaan (aan de top v.d. piramide) vinden de snelste geheugens.
+De architectuur van computersystemen zijn door de jaren heen geëvolueerd om met de laatste geheugentechnologiëen een zo snel mogelijk systeem te bouwen. Het principe van de *geheugenpiramide* blijft echter altijd overeind: onderaan (aan de basis v.d. piramide) vinden we de **grote** en **trage** (maar **goedkopere**) geheugens. Bovenaan (aan de top v.d. piramide) vinden de **kleinste** en **snelste** (maar **duurste**) geheugens.
 
 In hedendaags computersystemen, kunnen we b.v. volgende geheugens rangschikken van snel (en klein) naar trager (en groot):
 
@@ -124,4 +124,4 @@ In hedendaags computersystemen, kunnen we b.v. volgende geheugens rangschikken v
 - Storage (SSD, HD, ...)
 - Backup-storage (tapes, ...)
 
-> Hoewel een CPU en het RAM-geheugen dus via de systeembus met elkaar verbonden zijn, bevinden zich op de adres- en databus vaak nog extra cache-geheugens. Het principe van een cache-geheugen is altijd: recent opgevraagde gegeven worden gebuffert zodat ze sneller kunnen worden opgevraagd. Als een CPU dus kort na elkaar dezelfde adressen uit het RAM-geheugen opvraagt, zal in werkelijkheid het tussenliggende cache-geheugen er voor zorgen dat enkel de **eerste** keer het RAM-geheugen moet uitgelezen worden.
+> Hoewel een CPU en het RAM-geheugen dus via de systeembus met elkaar verbonden zijn, bevinden zich op de adres- en databus vaak nog extra cache-geheugens. Het **principe van een cache-geheugen** is altijd: **recent opgevraagde gegeven worden gebuffert** zodat ze sneller kunnen worden opgevraagd. Als een CPU dus kort na elkaar dezelfde locaties uit het RAM-geheugen opvraagt, zal in werkelijkheid het tussenliggende cache-geheugen er voor zorgen dat enkel de **eerste** keer het RAM-geheugen moet uitgelezen worden.
