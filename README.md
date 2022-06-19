@@ -97,6 +97,10 @@ Een CPU voert **instructies** uit. Er kunnen uiteraard enkel instructies uitgevo
 
 > Een 64-bit-processor heeft meestal werk-, databuffer- en adresbuffer-registers die 64 bit zijn.
 
+- **Statusregister**: een register met een aantal bits met een specifieke betekenis die de status v.d. laatst uitgevoerd weergeven
+	- **zero**-vlag: wordt op 1 gezet als de laatste instructie 0 als resultaat gaf (b.v. bij een rekenkundige berekening)
+	- **carry**-vlag: wordt op 1 gezet als de laatste instructie voor **overdracht** zorgde, b.v. wanneer het resultaat van een rekenkundige berekening te groot was om in een werkregister te passen
+
 ## CPU: fetch/decode/execute
 Een CPU herhaalt eigenlijk eindeloos deze 3 stappen:
 
@@ -106,3 +110,18 @@ Een CPU herhaalt eigenlijk eindeloos deze 3 stappen:
 
 ## Probeer zelf!
 https://tools.withcode.uk/cpu/?ram=913f911f920000000000000000000000
+
+## Geheugenpiramide
+De architectuur van computersystemen zijn door de jaren heen geëvolueerd om met de laatste geheugentechnologiëen een zo snel mogelijk systeem te bouwen. Het principe van de *geheugenpiramide* blijft echter altijd overeind: onderaan (aan de basis v.d. piramide) vinden we de **grote** en **trage** geheugens. Bovenaan (aan de top v.d. piramide) vinden de snelste geheugens.
+
+In hedendaags computersystemen, kunnen we b.v. volgende geheugens rangschikken van snel (en klein) naar trager (en groot):
+
+- werkregisters van een CPU
+- L1-cache-geheugen (we kunnen nog onderscheid maken tussen D-cache of data-cache wat een buffer is voor **gegevens** en I-cache of Instruction-cache wat een buffer is voor **instructies**)
+- L2-cache geheugen
+- L3-cache geheugen (bij multi-core CPU's wordt het L3-geheugen soms gedeeld door verschillende cores)
+- RAM-geheugen
+- Storage (SSD, HD, ...)
+- Backup-storage (tapes, ...)
+
+> Hoewel een CPU en het RAM-geheugen dus via de systeembus met elkaar verbonden zijn, bevinden zich op de adres- en databus vaak nog extra cache-geheugens. Het principe van een cache-geheugen is altijd: recent opgevraagde gegeven worden gebuffert zodat ze sneller kunnen worden opgevraagd. Als een CPU dus kort na elkaar dezelfde adressen uit het RAM-geheugen opvraagt, zal in werkelijkheid het tussenliggende cache-geheugen er voor zorgen dat enkel de **eerste** keer het RAM-geheugen moet uitgelezen worden.
